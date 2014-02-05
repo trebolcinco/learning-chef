@@ -27,6 +27,7 @@ Vagrant.configure("2") do |config|
   # This will allow the virtual machine to communicate of the common proxy port 8080.
   config.vm.network :forwarded_port, guest: 8080, host: 9090
 
+  config.omnibus.chef_version = :latest
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   # config.vm.network :private_network, ip: "192.168.33.10"
@@ -75,9 +76,9 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
   #
-  # config.vm.provision :chef_client do |chef|
-  #   chef.chef_server_url = "https://api.opscode.com/organizations/clover5"
-  #   chef.validation_client_name = "clover5-validator"
-  #   chef.validation_key_path = ".chef/clover5-validator.pem"
-  # end
+  config.vm.provision "chef_client" do |chef|
+     chef.chef_server_url = "https://api.opscode.com/organizations/clover5"
+     chef.validation_client_name = "clover5-validator"
+     chef.validation_key_path = ".chef/clover5-validator.pem"
+  end
 end
