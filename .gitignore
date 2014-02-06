@@ -8,7 +8,7 @@
 .rbenv-version
 
 #Idea
-.idea/*.*
+.idea/*/*.*
 
 # Emacs
 *~
@@ -23,6 +23,9 @@ tramp
 # Emacs org-mode
 .org-id-locations
 *_archive
+
+#Idea
+.idea/**/*.*
 
 # SublimeText
 *.sublime-workspace
